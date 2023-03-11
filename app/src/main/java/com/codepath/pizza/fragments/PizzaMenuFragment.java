@@ -44,8 +44,8 @@ public class PizzaMenuFragment extends Fragment {
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // go to activity to load pizza details fragment
-                listener.onPizzaItemSelected(position); // (3) Communicate with Activity using Listener
+
+                listener.onPizzaItemSelected(position);
             }
         });
     }
@@ -54,15 +54,12 @@ public class PizzaMenuFragment extends Fragment {
 
 
 
-    //--OnItemSelectedListener listener;
-    // This event fires 1st, before creation of fragment or any views
-    // The onAttach method is called when the Fragment instance is associated with an Activity.
-    // This does not mean the Activity is fully initialized.
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof OnItemSelectedListener){      // context instanceof YourActivity
-            this.listener = (OnItemSelectedListener) context; // = (YourActivity) context
+        if(context instanceof OnItemSelectedListener){
+            this.listener = (OnItemSelectedListener) context;
         } else {
             throw new ClassCastException(context.toString()
                     + " must implement PizzaMenuFragment.OnItemSelectedListener");
@@ -70,9 +67,9 @@ public class PizzaMenuFragment extends Fragment {
     }
 
 
-    // Define the events that the fragment will use to communicate
+
     public interface OnItemSelectedListener {
-        // This can be any number of events to be sent to the activity
+
         void onPizzaItemSelected(int position);
     }
 

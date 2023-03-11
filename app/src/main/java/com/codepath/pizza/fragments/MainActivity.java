@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity  implements PizzaMenuFragmen
         Log.d("DEBUG", getResources().getConfiguration().orientation + "");
 
         if (savedInstanceState == null) {
-            // Instance of first fragment
+
             PizzaMenuFragment firstFragment = new PizzaMenuFragment();
 
-            // Add Fragment to FrameLayout (flContainer), using FragmentManager
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();// begin  FragmentTransaction
-            ft.add(R.id.flContainer1, firstFragment);                                // add    Fragment
-            ft.commit();                                                            // commit FragmentTransaction
+
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.add(R.id.flContainer1, firstFragment);
+            ft.commit();
         }
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -50,20 +50,19 @@ public class MainActivity extends AppCompatActivity  implements PizzaMenuFragmen
 
         Bundle args = new Bundle();
         args.putInt("position", position);
-        secondFragment.setArguments(args);          // (1) Communicate with Fragment using Bundle
+        secondFragment.setArguments(args);
 
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.flContainer2, secondFragment) // replace flContainer
-                    //.addToBackStack(null)
+                    .replace(R.id.flContainer2, secondFragment)
+
                     .commit();
         }else{
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.flContainer2, secondFragment) // replace flContainer
-                    .addToBackStack(null)
+                    .replace(R.id.flContainer2, secondFragment)
                     .commit();
         }
     }
