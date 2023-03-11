@@ -1,4 +1,4 @@
-package com.codepath.mypizza;
+package com.codepath.pizza.fragments;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -7,15 +7,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.codepath.pizza.fragments.PizzaDetailFragment;
-import com.codepath.mypizza.fragments.PizzaMenuFragment;
+
+import com.example.myapplication.R;
 
 public class MainActivity extends AppCompatActivity  implements PizzaMenuFragment.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main3);
 
 
         Log.d("DEBUG", getResources().getConfiguration().orientation + "");
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity  implements PizzaMenuFragmen
 
             // Add Fragment to FrameLayout (flContainer), using FragmentManager
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();// begin  FragmentTransaction
-            ft.add(R.id.flContainer, firstFragment);                                // add    Fragment
+            ft.add(R.id.flContainer1, firstFragment);                                // add    Fragment
             ft.commit();                                                            // commit FragmentTransaction
         }
 
@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity  implements PizzaMenuFragmen
             PizzaDetailFragment secondFragment = new PizzaDetailFragment();
             Bundle args = new Bundle();
             args.putInt("position", 0);
-            secondFragment.setArguments(args);          // (1) Communicate with Fragment using Bundle
-            FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();// begin  FragmentTransaction
-            ft2.add(R.id.flContainer2, secondFragment);                               // add    Fragment
-            ft2.commit();                                                            // commit FragmentTransaction
+            secondFragment.setArguments(args);
+            FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+            ft2.add(R.id.flContainer2, secondFragment);
+            ft2.commit();
         }
     }
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity  implements PizzaMenuFragmen
         }else{
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.flContainer, secondFragment) // replace flContainer
+                    .replace(R.id.flContainer2, secondFragment) // replace flContainer
                     .addToBackStack(null)
                     .commit();
         }
